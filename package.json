@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devexpress/dx-react-core": "^1.0.0-alpha.14",
+    "@devexpress/dx-react-grid": "^1.0.0-alpha.14",
+    "@devexpress/dx-react-grid-bootstrap3": "^1.0.0-alpha.14",
+    "@devexpress/dx-react-grid-material-ui": "^1.0.0-alpha.14",
     "bootstrap": "^3.3.7",
     "express": "^4.15.4",
-    "firebase": "^4.4.0",
+    "firebase": "^3.0.0",
     "loadash": "^1.0.0",
+    "material-ui": "^1.0.0-beta.18",
+    "material-ui-icons": "^1.0.0-beta.17",
     "open": "0.0.5",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.2.2",
@@ -20,8 +27,7 @@
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.16.0",
     "rxjs": "^5.4.3",
-    "underscore": "^1.8.3",
-    "youtube-api-search": "0.0.5"
+    "underscore": "^1.8.3"
   },
   "scripts": {
     "start": "react-scripts start --proxy-config  proxy.config.json",
