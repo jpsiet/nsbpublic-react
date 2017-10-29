@@ -9,6 +9,7 @@ import  actions from './actions';
 import {createLogger} from 'redux-logger';
 import './index.css';
 import customRouter from './router';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
  const epicMiddleware = createEpicMiddleware(rootEpic);
  const middlewares = [epicMiddleware];

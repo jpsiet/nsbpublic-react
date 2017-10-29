@@ -3,6 +3,8 @@ import {STUDENT_DATA_RECEIVED,FILTER_STUDENT_LIST} from './../actions/index';
 const handleFilterData = function (studentList,filter){
 	
     var newFilterList = studentList.originalStudentList.filter( (student) => {
+
+        debugger;
     	if(!Boolean(filter.rating) && !Boolean(filter.standard)){
     		return student;
 
@@ -16,7 +18,7 @@ const handleFilterData = function (studentList,filter){
     	}
 
         if(filter.rating && filter.standard){
-    		return ((student.standard === filter.standard) && (student.currentRating === filter.rating))
+    		return ((student.standard === filter.standard) && (student.rating === filter.rating))
     			?student:false;
     	}
 

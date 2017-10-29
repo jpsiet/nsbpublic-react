@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import actions from '../actions';
+import { MenuItem } from 'material-ui/Menu';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import Select from 'material-ui/Select';
+
+const styles = {
+  customWidth: {
+    width: 150,
+  },
+};
 
 class SearchBar extends Component{
 
@@ -9,56 +18,73 @@ class SearchBar extends Component{
 
         super(props);
 		this.state= {
-			rating:'',
-			standard:''
+			rating:1,
+			standard:1
 		}
 	}
 
       
-  handleRatingChange(event){
-  	
-  	var rating = event.target.value;
-    this.state.rating = Number(rating);
-  //	this.setState({standard:standard});
-  	this.props.fetchFilterStudent(this.state)
+  handleRatingChange= event => {
+     
+     this.state.rating = event.target.value;
+   
+   /*	this.setState(prevState => ({
+         ...prevState,
+        rating:Number(event.target.value)
+    
+    }))*/
+     this.setState({ "rating": event.target.value });
 
-  }
-   handleStandardChange(event){
-   	var standard = event.target.value;
-   	debugger;
-   	this.state.standard = Number(standard);
-  //	this.setState({standard:standard});
-  	this.props.fetchFilterStudent(this.state)
-  }
+   	this.props.fetchFilterStudent(this.state)
+   } 
+
+   handleStandardChange = event => {
+    
+   /* this.setState(prevState => ({
+         ...prevState,
+        standard:Number(event.target.value)
+    
+    }))*/
+    this.setState({ "standard": event.target.value });
+     //this.state.standard = event.target.value;
+
+   	this.props.fetchFilterStudent(this.state)
+   } 
+ 
 
 
 	render(){
 	    console.log(this.props);
 
 		return (  <div>
-		              <select name="standard" onChange={ this.handleStandardChange.bind(this)} >
-			             <option value="">Select standard</option>
-						  <option value="1">1</option>
-						  <option value="2">2</option>
-						  <option value="3">3</option>
-						  <option value="4">4</option>
-						  <option value="5">5</option>
-						  <option value="6">6</option>
-						  <option value="7">7</option>
-						  <option value="8">8</option>
-					</select>
 
-					<select name="rating" onChange={this.handleRatingChange.bind(this)}>
-					     <option value="">Select Rating</option>
-			               <option value="1">1</option>
-						  <option value="2">2</option>
-						  <option value="3">3</option>
-						  <option value="4">4</option>
-						  <option value="5">5</option>
-						  <option value="6">6</option>
-						  <option value="7">7</option>
-						  <option value="8">8</option>
-					</select>
+					 <Select
+				          value={this.state.standard}
+				          onChange={ this.handleStandardChange.bind(this)}  style={styles.customWidth}>
+					          <MenuItem value={1}  > 1</MenuItem>
+					          <MenuItem value={2} > 2</MenuItem>
+					          <MenuItem value={3} > 3</MenuItem>
+					          <MenuItem value={4}> 4</MenuItem>
+					          <MenuItem value={5}> 5</MenuItem>
+					          <MenuItem value={6} >6 </MenuItem>
+					          <MenuItem value={7} > 7</MenuItem>
+					          <MenuItem value={8} > 8</MenuItem>
+		              </Select>
+
+		               <span>    </span>
+
+					 <Select
+				         value={this.state.rating} style={styles.customWidth}
+				          onChange={ this.handleRatingChange.bind(this)}>
+					          <MenuItem value={1} > 1</MenuItem>
+					          <MenuItem value={2} > 2</MenuItem>
+					          <MenuItem value={3} > 3</MenuItem>
+					          <MenuItem value={4} > 4</MenuItem>
+					          <MenuItem value={5} > 5</MenuItem>
+					          <MenuItem value={6} > 6</MenuItem>
+					          <MenuItem value={7} > 7</MenuItem>
+					          <MenuItem value={8} > 8</MenuItem>
+		              </Select>
 
              </div>
 
