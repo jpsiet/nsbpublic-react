@@ -7,7 +7,10 @@ import {createEpicMiddleware} from 'redux-observable';
 import {rootEpic} from './epics';
 import  actions from './actions';
 import {createLogger} from 'redux-logger';
-import './index.css';
+
+
+import './assets/css/index.css';
+
 import customRouter from './router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 

@@ -1,0 +1,229 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+.header{
+ position: relative;
+ background-color: #5881a2;
+ color: white !important;
+ padding: 5px 20px;
+}
+.header ul li a{
+	padding-right: 20px;
+	cursor: pointer;
+	color: white;
+	padding-top: 15px;
+	display: inline-block;
+}
+ .header ul li {
+
+	float: left;
+	list-style-type: none;
+
+}
+img{
+
+}
+.header ul li:hover ul{
+
+}
+.header ul li ul{
+	display: none;
+}
+
+.header-logo{
+ float: left;
+
+}
+.header-links{
+	float: right;
+}
+.search-bar{
+
+	margin:20px;
+	text-align: center;
+}
+.search-bar input{
+	width: 75%;
+}
+.video-item img{
+	max-width: 64px;
+}
+
+.studnet-list-search{
+	padding: 15px;
+	border: 1px solid blue;
+	text-align: center;
+}
+.video-details .details{
+	margin-top: 10px;padding: 10px;
+	border: 1px solid  #ddd;
+	border-radius: 4px;
+}
+
+.list-group-item{
+	cursor: pointer;
+}
+
+.list-group-item:hover{
+	background-color: #eee;
+}
+
+th, th{
+
+	vertical-align: middle !important;
+	text-align: center !important;
+}
+
+.input-group{
+	margin:20px 0px;
+}
+svg{
+	height: 100px;
+}
+
+
+.student-list-cont{
+
+	border: 1px solid gray;
+}
+
+.student-list-search{
+   text-align: center;
+     padding: 20px 10px 0 10px;
+}
+
+.student-list-search select{
+	margin-right: 30px;
+	padding: 5px 10px;
+}
+
+.student-list-search input{
+	margin-right: 30px;
+}
+
+.student-list{
+	margin-top: 20px;
+	border: 1px solid green;
+}
+
+.progess-text{
+	text-align: center;
+	color: green;
+	font-size: 15px;
+}
+
+.student-details{
+
+	border: 1px solid gray;
+	padding: 50x 100px;
+	margin: 20px 10px 0;
+}
+
+.formRow{
+	 padding: 15px 0 10px;
+	 border: 1px solid gray;
+}
+.formRow label{
+  width: 40%;
+  text-align: left;
+  padding-left: 30px;
+}
+.formRow input{
+	text-align: center;
+}
+
+.about-us-cont{
+
+	padding: 40px 30px;
+	border: 1px solid gray;
+	position: relative;
+}
+
+.about-us-cont img{
+
+	position: absolute;
+    top: 31px;
+    left: 20px;
+}
+
+.about-us-cont p{
+
+	position: relative;
+    padding-left: 200px;
+}
+
+.about-us-cont .signature{
+ position: absolute;
+ right:20px;
+ bottom: 10px;
+ font-weight: bold;
+ text-decoration: underline;
+}
+
+
+.contact-us{
+
+	border: 1px solid gray;
+	padding: 50px 20px 10px;
+
+}
+
+.contact-us p{
+
+	text-align: center;
+	
+}
+
+.student-list-cont{
+
+	font-size: 15px;
+}
+
+.MuiDialogTitle-root-123 h2{
+	text-align: center;
+}
+
+.MuiDialog-paper-2{
+	max-height: 100% !important
+}
+
+.loading-progress-cont{
+  text-align: center;
+  border: 1px solid blue;
+  padding: 25px 100px;
+}
+
+.student-data-cont p {
+
+	color: blue; 
+	font-size: 17px;
+	text-align: center;
+
+}
+
+.close-dialog{
+	    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+table td{
+	padding:10px !important;
+	padding-left:50px !important;
+}

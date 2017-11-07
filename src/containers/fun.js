@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-export default class Fun extends Component{
-	
-	render(){
+import React from 'react';
+import FunSlider from '../components/fun_slider';
 
-	   return (<div> Welcome to Fun Zone</div>)
-	}
+const Hello = function(){
+
+	return (<div> <FunSlider> </FunSlider> </div>)
 }
+
+export default Hello;

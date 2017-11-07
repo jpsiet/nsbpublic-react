@@ -4,8 +4,7 @@ import { BrowserRouter as Router,
 
   import React from 'react';
  
-  import Hello from './containers/Hello';
-  import GoodBye from './containers/GoodBye';
+ 
   import Header from './components/Header';
   import StudentList from './containers/student_list';
    import AboutUs from './containers/about_us';
@@ -17,10 +16,9 @@ const customRouter = function(){
 	   <div>
 	    {Header()}
 	    <hr/>
-           <Route  path="/hello" component={Hello} />
+           
             <Route  path="/admin" component={StudentList} />
-		        <Route  path="/goodbye" component={GoodBye} />
-            <Route  path="/aboutus" component={AboutUs} />
+		         <Route  path="/aboutus" component={AboutUs} />
             <Route  path="/contactus" component={ContactUs} />
             <Route  path="/fun" component={Fun} />
      </div>

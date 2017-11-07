@@ -2,8 +2,9 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import actions from '../actions';
 import {bindActionCreators} from 'redux';
-import StudentSearchBar from './student_search_bar';
 import StudentDetails from './student_details';
+import FontAwesome from 'react-fontawesome';
+
 
 import {
   Template, TemplateConnector, TemplateRenderer
@@ -94,6 +95,9 @@ class StudentList extends Component{
   }
 
 }
+
+ 
+  
  handleRequestClose = value => {
     this.setState({"open": false });
   };
@@ -102,72 +106,78 @@ handleCloseDialog(){
 	this.setState( {"open" : false});
 }
 	render(){
-	
-		return (
-		<div>
-		         <StudentDetails  open={this.state.open}  studentInfo={this.state.studentInfo}
-          onRequestClose={this.handleRequestClose} />
-			    <div className="student-list-cont">
-	                 <div className="student-list">
 
+     if(this.props.isDataLoading){
+      return <div className="loading-progress-cont"> <span> Please wait while data is loading...</span> <FontAwesome
+                className='fa-spinner' size='3x'  spin="true" name="loading" /> </div>
 
-                                     <Paper>
+     }else{
+
+         return (
+    <div className="student-data-cont">
+       <p>  Note : Double click on any row see more about details </p>
+  
+            <StudentDetails  open={this.state.open}  studentInfo={this.state.studentInfo}
+               onRequestClose={this.handleRequestClose} />
+        
+             <div className="student-list-cont">
+                 
+                                  
 
 
                                         <Grid
-										    rows={this.props.studentList}
-										    columns={this.state.columns}>
-										    <FilteringState defaultFilters={[]} />
+                        rows={this.props.studentList}
+                        columns={this.state.columns}>
+                        <FilteringState defaultFilters={[]} />
                                             <LocalFiltering />
                                              <SelectionState />
-										    <TableView tableRowTemplate={this.tableRowTemplate} />
-                                             <TableSelection highlightSelected selectByRowClick />
-										    <TableHeaderRow />
-										    <TableFilterRow />
+                        <TableView tableRowTemplate={this.tableRowTemplate} />
+                                           
+                        <TableHeaderRow />
+                        <TableFilterRow />
 
 
-																				     // override default 'tableViewRow' template
-										        <Template
-										          name="tableViewRow"
-										          // use custom template only for table data rows
-										          predicate={({ tableRow }) => tableRow.type === 'data'}
-										        >
-										          {params => (
-										            <TemplateConnector>
-										              {(getters, actions) => (
-										                <TemplateRenderer
-										                  // custom template
-										                  template={this.tableRowTemplate.bind(this)}
-										                  // custom template params
-										                  params={
-										                    getSelectTableRowTemplateArgs({
-										                      selectByRowClick: true,
-										                      highlightSelected: true,
-										                      ...params,
-										                    }, getters, actions)
-										                  }
-										                />
-										              )}
-										            </TemplateConnector>
-										          )}
-										        </Template>
+                                             // override default 'tableViewRow' template
+                            <Template
+                              name="tableViewRow"
+                              // use custom template only for table data rows
+                              predicate={({ tableRow }) => tableRow.type === 'data'}
+                            >
+                              {params => (
+                                <TemplateConnector>
+                                  {(getters, actions) => (
+                                    <TemplateRenderer
+                                      // custom template
+                                      template={this.tableRowTemplate.bind(this)}
+                                      // custom template params
+                                      params={
+                                        getSelectTableRowTemplateArgs({
+                                        
+                                          highlightSelected: true,
+                                          ...params,
+                                        }, getters, actions)
+                                      }
+                                    />
+                                  )}
+                                </TemplateConnector>
+                              )}
+                            </Template>
 
-										  </Grid>
-                                   </Paper>
+                      </Grid>
+                           
+          </div>
+         </div>
+      )
 
-							     
-						    </div>
-
-					</div>
-
-			   </div>
-
-			)
+     }
+	
+		
 	}
 }
 
 function mapStateToProps(studentList){
-	return {studentList:studentList.studentList.filterStudentList}
+	return {studentList:studentList.studentList.filterStudentList,
+    isDataLoading:studentList.studentList.isStudentDataLoading}
 
 }
 function mapDispatchToProps(dispatch){

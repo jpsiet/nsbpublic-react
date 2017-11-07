@@ -1,4 +1,4 @@
-import {STUDENT_DATA_RECEIVED,FILTER_STUDENT_LIST} from './../actions/index';
+import {STUDENT_DATA_RECEIVED,FILTER_STUDENT_LIST,FETCH_STUDENT} from './../actions/index';
 
 const handleFilterData = function (studentList,filter){
 	
@@ -28,17 +28,25 @@ const handleFilterData = function (studentList,filter){
 	return newState;
 
 }
- const reducer_students = function (studentList={ originalStudentList:[], filterStudentList:[]},action){
+
+const initalState = {
+     originalStudentList:[], filterStudentList:[],
+     isStudentDataLoading:false
+
+}
+ const reducer_students = function (state=initalState,action){
 	switch(action.type){
 		case STUDENT_DATA_RECEIVED:
-			return {...studentList,originalStudentList:action.payload.data,
-				filterStudentList:action.payload.data};
+			return {...state,originalStudentList:action.payload.data,
+				filterStudentList:action.payload.data, "isStudentDataLoading":false};
 
 		case FILTER_STUDENT_LIST:
-			return handleFilterData(studentList,action.payload);
+			return handleFilterData(state,action.payload);
+        case FETCH_STUDENT:
+            return {...state, isStudentDataLoading:true}
 
 			default:
-			return studentList
+			return state
         }
 
 

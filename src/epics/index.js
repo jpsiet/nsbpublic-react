@@ -13,7 +13,7 @@ import actions,{FETCH_STUDENT} from '../actions';
 const searchProducts = (action$) => {
   return action$
     .ofType(FETCH_STUDENT)
-    .delay(1000)
+    .delay(5000)
     .switchMap(q => {
       return api.getProducts().map(actions.studentdatarecieved)
     });
