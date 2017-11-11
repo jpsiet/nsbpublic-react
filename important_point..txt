@@ -1,0 +1,44 @@
+AWS EC2 instance  ubuntu@ec2-18-221-43-252.us-east-2.compute.amazonaws.com
+
+// to check the list of file
+
+ ls -la 
+
+// remove the folder
+rm -rf mydir
+
+Edit command
+
+Open file vi  
+
+then i for insert mode edit any thing
+
+then esc key in order to save / cancel  
+
+:wq save
+:q! don't save
+
+
+ kill existing running process
+ 
+kill -9 PID
+
+Node command
+
+ctr+z  to see all paused job ( only in case of sever running)     do bg %2 for second job...
+
+do  bg %1  in order to run to background
+
+
+Check for server  instances  running
+
+ps -ef
+
+and then u can kill by kill command
+
+and then exit now the current server will be running behind the scene
+
+to exit with server running  
+
+ to update NPM
+npm i -g npm 

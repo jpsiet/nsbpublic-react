@@ -1,0 +1,22 @@
+Install MongoDB
+
+create data  and log folder  inside data folder create db folder
+
+Now to bin- -> 
+
+
+for some version on windows storageEngine does not work so specify the path 
+
+
+
+
+mongod --dbpath C:\Jitendra\project_app\mongodb\data\db --storageEngine=mmapv1 
+
+
+and then do mongo in other terminal 
+
+show dbs
+
+use dbname
+
+db.createCollection("collectionName");
