@@ -1,4 +1,5 @@
-import {STUDENT_DATA_RECEIVED,FILTER_STUDENT_LIST,FETCH_STUDENT} from './../actions/index';
+import {STUDENT_DATA_RECEIVED,FILTER_STUDENT_LIST,FETCH_STUDENT,
+UPDATE_STUDENT_RECORDS,DELETE_STUDENT_RECORD} from './../actions/index';
 
 const handleFilterData = function (studentList,filter){
 	
@@ -29,6 +30,35 @@ const handleFilterData = function (studentList,filter){
 
 }
 
+const handleStudentUpdateData = (state, payload) => {
+    var newState = {};
+
+    console.log(state);
+    debugger;
+    // first FInd the student Index in State,
+    var index = state.filterStudentList.map(function(e) { return e.rollNumber; }).indexOf(payload.rollNumber);
+
+    newState = Object.assign({},{...state, filterStudentList:[...state.filterStudentList.slice(0,index),payload,
+        ...state.filterStudentList.slice(index+1)]});
+    //var studnetIndex =   state.filterStudentList.filter( student =>  {return studnet.rollNumber ===1})
+    return newState
+}
+
+
+const handleDeleteData = (state, payload) => {
+    var newState = {};
+
+    console.log(state);
+    debugger;
+    // first FInd the student Index in State,
+    var index = state.filterStudentList.map(function(e) { return e.rollNumber; }).indexOf(payload.rollNumber);
+
+     newState = Object.assign({},{...state, filterStudentList:[...state.filterStudentList.slice(0,index),
+        ...state.filterStudentList.slice(index+1)]});
+    //var studnetIndex =   state.filterStudentList.filter( student =>  {return studnet.rollNumber ===1})
+    return newState
+}
+
 const initalState = {
      originalStudentList:[], filterStudentList:[],
      isStudentDataLoading:false
@@ -42,6 +72,13 @@ const initalState = {
 
 		case FILTER_STUDENT_LIST:
 			return handleFilterData(state,action.payload);
+
+        case UPDATE_STUDENT_RECORDS:
+         return  handleStudentUpdateData(state,action.payload);
+
+         case  DELETE_STUDENT_RECORD:
+         return  handleDeleteData(state,action.payload);
+         
         case FETCH_STUDENT:
             return {...state, isStudentDataLoading:true}
 

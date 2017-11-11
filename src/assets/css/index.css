@@ -227,3 +227,14 @@ table td{
 	padding:10px !important;
 	padding-left:50px !important;
 }
+
+.student-icon-cont{
+
+	direction: rtl;
+}
+
+.student-icon-cont a{
+
+	padding: 5px;
+}
+

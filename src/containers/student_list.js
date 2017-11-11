@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import actions from '../actions';
+import actions,{DELETE_STUDENT_RECORD,UPDATE_STUDENT_RECORDS}  from '../actions';
 import {bindActionCreators} from 'redux';
 import StudentDetails from './student_details';
 import FontAwesome from 'react-fontawesome';
+import ReactDOM from 'react-dom';
 
 
 import {
@@ -76,11 +77,14 @@ class StudentList extends Component{
       const handleDoubleClick = () => {
             clearTimeout(timer);
 	        prevent = true;
-            this.setState( {"studentInfo":row,"open": true} , function () {
-			    console.log(this.state);
-			});
-            console.log(this.state);
+         
+          ReactDOM.render( <StudentDetails    studentInfo={row}
+               onRequestClose={this.handleRequestClose} />,this.refs.studentDetailsCont)
+        
+			         this.setState( {"studentInfo":row,"open": true});
+         
         }
+
       return (
         <tr
           className={selected ? 'active' : ''}
@@ -99,7 +103,15 @@ class StudentList extends Component{
  
   
  handleRequestClose = value => {
-    this.setState({"open": false });
+     
+     if(value.type === 'UPDATE_STUDENT_RECORDS'){
+       
+       this.props.updateStudentRecord(value.data);
+     }else if(value.type === 'DELETE_STUDENT_RECORD'){
+      this.props.deleteStudentRecord(value.data);
+     }
+     ReactDOM.unmountComponentAtNode(this.refs.studentDetailsCont);
+  
   };
 
 handleCloseDialog(){
@@ -109,23 +121,21 @@ handleCloseDialog(){
 
      if(this.props.isDataLoading){
       return <div className="loading-progress-cont"> <span> Please wait while data is loading...</span> <FontAwesome
-                className='fa-spinner' size='3x'  spin="true" name="loading" /> </div>
+                className='fa-spinner' size='3x'  spin={true} name="loading" /> </div>
 
      }else{
 
          return (
     <div className="student-data-cont">
-       <p>  Note : Double click on any row see more about details </p>
-  
-            <StudentDetails  open={this.state.open}  studentInfo={this.state.studentInfo}
-               onRequestClose={this.handleRequestClose} />
+       <p> Double click on  row to do more actions </p>
+          <div ref="studentDetailsCont">
+              
+          </div>
+          
         
              <div className="student-list-cont">
                  
-                                  
-
-
-                                        <Grid
+                    <Grid
                         rows={this.props.studentList}
                         columns={this.state.columns}>
                         <FilteringState defaultFilters={[]} />
@@ -175,11 +185,13 @@ handleCloseDialog(){
 	}
 }
 
+
 function mapStateToProps(studentList){
 	return {studentList:studentList.studentList.filterStudentList,
     isDataLoading:studentList.studentList.isStudentDataLoading}
 
 }
+
 function mapDispatchToProps(dispatch){
    return bindActionCreators(actions,dispatch);
 }

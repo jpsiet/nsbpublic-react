@@ -1,6 +1,5 @@
 import { BrowserRouter as Router,
-  Route,
-  Link } from 'react-router-dom';
+  Route} from 'react-router-dom';
 
   import React from 'react';
  
@@ -18,7 +17,7 @@ const customRouter = function(){
 	    <hr/>
            
             <Route  path="/admin" component={StudentList} />
-		         <Route  path="/aboutus" component={AboutUs} />
+             <Route  path="/aboutus" component={AboutUs} />
             <Route  path="/contactus" component={ContactUs} />
             <Route  path="/fun" component={Fun} />
      </div>

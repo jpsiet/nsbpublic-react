@@ -1,9 +1,9 @@
 import React from 'react';
-import FunSlider from '../components/fun_slider';
+import FunSection from '../components/fun_section';
 
 const Hello = function(){
 
-	return (<div> <FunSlider> </FunSlider> </div>)
+	return (<div> <FunSection> </FunSection> </div>)
 }
 
 export default Hello;

@@ -10,7 +10,7 @@ import actions,{FETCH_STUDENT} from '../actions';
  * @param store
  * @returns {any|*|Observable}
  */
-const searchProducts = (action$) => {
+const fetchStudents = (action$) => {
   return action$
     .ofType(FETCH_STUDENT)
     .delay(5000)
@@ -20,10 +20,8 @@ const searchProducts = (action$) => {
 };
 
 
-
-
 export const rootEpic = combineEpics(
-  searchProducts
+  fetchStudents
 );
 
 
